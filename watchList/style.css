@@ -19,6 +19,7 @@ header{
     align-items: center;
     color: #fff;
     padding: 0 20px;
+    
 }
 header::before{
     content: '';
@@ -36,6 +37,8 @@ header h1{
 }
 header p{
     font-size: 3vw;
+    font-weight: 700;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 header a{
     text-decoration: none;
@@ -128,19 +131,23 @@ header a{
 @media(max-width:549px){
     .movie-header h3{
         font-size: .825rem;
+        font-weight: 900;
     }
     .movie-header p{
         font-size: .8rem;
+        font-weight: 500;
     }
     .movie-card{
         width: 90%;
     }
     .movie-details{
         font-size: .475rem;
+        font-weight: 600;
     }
     .movie-plot{
         font-size: .625rem;
         line-height: 1.5;
+        font-weight: 500;
     }
     
 }
