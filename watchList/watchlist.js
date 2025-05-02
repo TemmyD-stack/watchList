@@ -4,7 +4,7 @@ function renderWatchlist() {
   const storedList = JSON.parse(localStorage.getItem('watchlist')) || [];
 
   if (storedList.length === 0) {
-    watchlistSection.innerHTML = "<p>Your watchlist is empty.</p>";
+    watchlistSection.innerHTML = "<p class='error-message'>Your watchlist is empty.</p>";
     return;
   }
 
@@ -21,16 +21,29 @@ function renderWatchlist() {
                 <P>${movie.Runtime ? movie.Runtime : '117 min'}</p>
                 <p class="movie-genre">Genre: ${movie.Type ? movie.Type : 'Action, Drama, Sci-fi'}</p>
                 <div class='btn'>
-                    <button data-id="${movie.imdbID}" onclick='${removeFromWatchlist()}'><i class="fa-solid fa-circle-minus"></i>Remove</button> 
+                    <button data-id="${movie.imdbID}" ><i class="fa-solid fa-circle-minus"></i>Remove</button> 
                     
                 </div>
             </div>
              <p class="movie-plot">${movie.plot ? movie.plot : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dignissimos repudiandae assumenda, numquam perferendis explicabo quae.'}</p>
         </div>
     `;
+    
     movieEl.classList.add('movie-card');        
     watchlistSection.appendChild(movieEl);
+    const removeBtn = movieEl.querySelector('button');
+    removeBtn.addEventListener('click', () => removeFromWatchlist(movie.imdbID));
   });
+  
 }
+function removeFromWatchlist(imdbID) {
 
+    let storedList = JSON.parse(localStorage.getItem('watchlist')) || [];
+    
+    storedList = storedList.filter(movie => movie.imdbID !== imdbID);
+    localStorage.setItem('watchlist', JSON.stringify(storedList));
+    renderWatchlist(); 
+  }
+  
 renderWatchlist();
+

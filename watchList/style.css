@@ -111,3 +111,36 @@ header a{
     background: none;
     outline: none;
 }
+.error-message{
+    width: 90%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    color: #9CA3AF;
+    font-size: 1rem;
+    text-align: center;
+}
+@media(max-width:549px){
+    .movie-header h3{
+        font-size: .825rem;
+    }
+    .movie-header p{
+        font-size: .8rem;
+    }
+    .movie-card{
+        width: 90%;
+    }
+    .movie-details{
+        font-size: .475rem;
+    }
+    .movie-plot{
+        font-size: .625rem;
+        line-height: 1.5;
+    }
+    
+}
