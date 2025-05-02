@@ -11,7 +11,7 @@ body {
 header{
    position: relative;  
    z-index: 1;
-    background: url('/images/bg-img.png') no-repeat top /cover;
+    background: url('/images/bg-img.png') no-repeat center /cover;
     opacity: 0.9;
     height: 200px;
     display: flex;
@@ -40,52 +40,14 @@ header p{
 header a{
     text-decoration: none;
     color: #fff;
-    cursor: pointer;
+
 }
-.search-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #374151;
-    position: absolute;
-    top: 180px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    border-radius: 5px;
-    width: 80vw;
+
+.watchlist-section{
+    width: 90%;
     max-width: 800px;
+    margin: 0 auto;
 }
-.search-container i{
-    font-size: 1rem;
-    color: #9CA3AF;
-    background: #fff;
-    padding: 9px;
-    border-radius: 5px 0 0 9px;
-    
-}
-.search-container input[type="text"]{
-    min-width: 70%;
-    padding: 8px 0;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    color: #6B7280;
-    background: #fff;
-}
-.search-container button{
-    padding: 8px 20px;
-    border: none;
-    background: #F9FAFB;
-    color: #374151;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 1rem;
-    border-left: 1px solid #374151;
-    min-width: 25%;
-}
-
-
 .movie-card{
     width: 100%;
     display: flex;
@@ -122,11 +84,7 @@ header a{
    padding-right: 2px;
    
 }
-.results-section{
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-}
+
 .movie-details{
     display: flex;
     justify-content: flex-start;
@@ -142,7 +100,7 @@ header a{
     padding: 5px 0;
     line-height: 2;
 }
-.btn{
+.bth{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,38 +110,4 @@ header a{
     border: none;
     background: none;
     outline: none;
-}
-.error-message{
-    width: 90%;
-    height: calc(100vh - 200px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    color: #9CA3AF;
-    font-size: 1rem;
-    text-align: center;
-}
-
-@media(max-width:549px){
-    .movie-header h3{
-        font-size: .825rem;
-    }
-    .movie-header p{
-        font-size: .8rem;
-    }
-    .movie-card{
-        width: 90%;
-    }
-    .movie-details{
-        font-size: .475rem;
-    }
-    .movie-plot{
-        font-size: .625rem;
-        line-height: 1.5;
-    }
-    
 }

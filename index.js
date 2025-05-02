@@ -1,4 +1,3 @@
-// http://www.omdbapi.com/?i=tt3896198&apikey=b25e5304
 const apiKey = 'b25e5304';
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('search-button');
@@ -23,7 +22,10 @@ function searchMovies(query) {
         if (data.Response === 'True') {
           displayMovies(data.Search);
         } else {
-          watchlistEl.innerHTML = `<p>${data.Error}</p>`;
+          watchlistEl.innerHTML = `
+          <p class="error-message">
+           Unable to find what you’re looking for. Please try another search.
+          </p>`;
         }
       });
     }
@@ -33,7 +35,7 @@ function displayMovies(movies) {
     movies.forEach(movie => {
       const movieEl = document.createElement('div');
       movieEl.innerHTML = `
-        <img class="movie-img" src="${movie.Poster !== 'N/A' ? movie.Poster : ''}" alt="${movie.Title}" width="100">
+        <img class="movie-img" src="${movie.Poster !== 'N/A' ? movie.Poster : ''}" alt="${movie.Title}" >
         <div class="movie-info">
             <div class="movie-header">
                 <h3 class="movie-title">${movie.Title} (${movie.Year})</h3>
@@ -43,8 +45,8 @@ function displayMovies(movies) {
                 <P>${movie.Runtime ? movie.Runtime : '117 min'}</p>
                 <p class="movie-genre">Genre: ${movie.Type ? movie.Type : 'Action, Drama, Sci-fi'}</p>
                 <div class='btn'>
-                    <button data-id="${movie.imdbID}"><i class="fa-solid fa-circle-plus"></i></button> 
-                    <span class="add-text">Add to Watchlist</span>
+                    <button data-id="${movie.imdbID}"><i class="fa-solid fa-circle-plus"></i>Add to Watchlist</button> 
+                    
                 </div>
             </div>
              <p class="movie-plot">${movie.plot ? movie.plot : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dignissimos repudiandae assumenda, numquam perferendis explicabo quae.'}</p>
@@ -52,11 +54,26 @@ function displayMovies(movies) {
         
       `;
         movieEl.classList.add('movie-card');
-      watchlistEl.appendChild(movieEl);
+        watchlistEl.appendChild(movieEl);
+
   
       const addButton = movieEl.querySelector('button');
       addButton.addEventListener('click', () => addToWatchlist(movie));
     });
   }
+
+  function addToWatchlist(movie) {
+    let storedList = JSON.parse(localStorage.getItem('watchlist')) || [];
+  
+    if (!storedList.some(item => item.imdbID === movie.imdbID)) {
+      storedList.push(movie);
+      localStorage.setItem('watchlist', JSON.stringify(storedList));
+      alert("Added to watchlist!");
+    } else {
+      alert("Movie already in watchlist.");
+    }
+  }
+  
+  
   
   
